@@ -41,7 +41,7 @@ char calDirection (char pos, char command){
 
 }
 
-int calLocation(int x,int y,int z, char commands[], int size ){
+int calLocation(int x,int y,int z, vector<char> commands, int size ){
     char pos = 'n';
     bool zActive = false;
     char zPos = 'u';
@@ -119,16 +119,18 @@ int calLocation(int x,int y,int z, char commands[], int size ){
     return 0;
 }
 int main() {
-    //taking command inputs 
-    int n;
-    cin>>n;
-    char charCommand[n];
-    for(int i=0;i<n;i++){
-        cin>>charCommand[i];
-    }
+    //taking space separated command inputs 
+   
+  string rawInput;
+  vector<char> charCommand;
+  while( getline( cin, rawInput, ' ' ) )
+  {
+
+    charCommand.push_back(rawInput[0]);
+  }
     int x_cor=0;
     int y_cor=0;
     int z_cor=0;
-    calLocation(x_cor,y_cor,z_cor,charCommand,n);
+    calLocation(x_cor,y_cor,z_cor,charCommand,charCommand.size());
 
 }
